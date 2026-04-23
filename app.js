@@ -87,7 +87,7 @@ function selectMilestone(idx) {
     
     const ficha = document.getElementById('ficha-tecnica');
     ficha.classList.remove('opacity-40');
-    ficha.classList.add('opacity-100', 'border-emerald-500/50', 'shadow-[0_0_30px_rgba(46,204,113,0.1)]');
+    ficha.classList.add('opacity-100', 'border-amber-500/50', 'shadow-[0_0_30px_rgba(46,204,113,0.1)]');
     
     // Inyectar Datos Reales
     document.getElementById('ficha-id').innerText = milestone.id;
@@ -96,7 +96,7 @@ function selectMilestone(idx) {
     document.getElementById('ficha-resp').innerText = `Responsable: ${milestone.responsable}`;
     
     // Formatear texto para resaltar etiquetas clave (ej. Arquitectura:, Riesgo:)
-    const formattedDetails = milestone.details.replace(/(Arquitectura:|Riesgo:|Estrategia:|MVP:|Macro:|Cambio Estratégico:|Avatar:)/g, '<strong class="text-emerald-400">$1</strong>');
+    const formattedDetails = milestone.details.replace(/(Arquitectura:|Riesgo:|Estrategia:|MVP:|Macro:|Cambio Estratégico:|Avatar:)/g, '<strong class="text-amber-400">$1</strong>');
     document.getElementById('ficha-details').innerHTML = formattedDetails;
 }
 
