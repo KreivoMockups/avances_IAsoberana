@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Soberana - Dashboard de Ejecución</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --primary: #1a2a3a; --accent: #2ecc71; --bg-dark: #0f172a; }
+        .upset-matrix-circle { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #475569; background: #0f172a; position: relative; z-index: 10; margin: 0 auto;}
+        .upset-matrix-circle.active { background-color: var(--accent); border-color: var(--accent); box-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
+        .upset-line { width: 2px; background-color: var(--accent); position: absolute; left: 50%; transform: translateX(-50%); z-index: 1; }
+        .bar-container { height: 120px; }
+        .bar { width: 40px; background-color: #334155; position: relative; transition: all 0.3s; cursor: pointer; border-radius: 4px 4px 0 0; }
+        .bar:hover, .bar.active { background-color: #4ade80; }
+        .bar-fill { width: 100%; position: absolute; bottom: 0; background-color: var(--accent); transition: height 1s ease-out; border-radius: 4px 4px 0 0; }
+        .grid-row-label { height: 28px; display: flex; align-items: center; justify-content: flex-end; }
+        .grid-row-dot { height: 28px; display: flex; align-items: center; justify-content: center; }
+        .custom-scrollbar::-webkit-scrollbar { height: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+    </style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_ApprovalStatus msdt:dt="string">0</mso:_ApprovalStatus>
+<mso:_ApprovalAssignedTo msdt:dt="string"></mso:_ApprovalAssignedTo>
+<mso:_ApprovalRespondedBy msdt:dt="string"></mso:_ApprovalRespondedBy>
+<mso:_ApprovalSentBy msdt:dt="string"></mso:_ApprovalSentBy>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen p-4 md:p-8 font-sans overflow-x-hidden selection:bg-emerald-500/30">
+    <div class="max-w-7xl mx-auto bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-6 md:p-10">
+        
+        <header class="mb-8 border-b border-slate-800 pb-6 flex justify-between items-end">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight text-white">CONTROL DE EJECUCIÓN SOBERANA</h1>
+                <p class="text-slate-400 mt-2 tracking-wider text-sm uppercase">UpSet Plot: Avance Contractual vs. Tareas EDT</p>
+            </div>
+            <div class="text-right hidden md:block">
+                <span class="px-3 py-1 bg-slate-800 text-emerald-400 text-xs rounded-full border border-emerald-500/30 font-bold">V 2.0 (HTML/JS Native)</span>
+            </div>
+        </header>
+
+        <div class="flex">
+            <div id="expected-labels" class="w-1/3 pt-[140px] pr-6 text-right flex flex-col">
+                </div>
+
+            <div class="w-2/3 overflow-x-auto custom-scrollbar pb-4">
+                
+                <div id="bars-container" class="bar-container flex gap-12 mb-4 border-b border-slate-700 pb-2 relative">
+                    </div>
+
+                <div id="matrix-container" class="relative flex gap-12 pt-2">
+                    </div>
+            </div>
+        </div>
+
+        <div id="ficha-tecnica" class="mt-8 bg-slate-800/40 p-6 rounded-xl border border-slate-700 transition-all duration-500 opacity-40">
+            <div class="flex justify-between items-start mb-4 border-b border-slate-700 pb-4">
+                <div>
+                    <span id="ficha-id" class="text-xs font-bold bg-emerald-900/50 text-emerald-400 px-2 py-1 rounded tracking-widest mb-2 inline-block">HITO</span>
+                    <h3 id="ficha-title" class="text-2xl font-bold text-white tracking-wide">Seleccione una columna superior</h3>
+                </div>
+                <div class="text-right">
+                    <p id="ficha-date" class="text-sm text-slate-400 font-mono"></p>
+                    <p id="ficha-resp" class="text-sm font-bold text-slate-300 mt-1"></p>
+                </div>
+            </div>
+            <p id="ficha-details" class="text-slate-300 leading-relaxed text-lg font-light">
+                Haga clic en las barras de porcentaje para visualizar las decisiones estratégicas de las actas de reunión.
+            </p>
+        </div>
+
+    </div>
+
+    <script src="registry.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
