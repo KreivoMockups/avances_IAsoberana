@@ -33,3 +33,14 @@ Dada su arquitectura estática, no se requieren servidores de aplicaciones (Node
 1. Clonar el repositorio:
    ```bash
    git clone [https://github.com/tu-usuario/malla-soberana-dashboard.git](https://github.com/tu-usuario/malla-soberana-dashboard.git)
+
+
+🛡️ Gobernanza y Casos de Uso (Bachué & Chiminigagua)
+El dashboard rastrea transversalmente la evolución de los modelos fundacionales:
+
+💧 Bachué: Hitos asociados a salud pública, triaje epidemiológico y anonimización de historias clínicas (Ley 1581).
+
+🔥 Chiminigagua: Hitos enfocados en biodiversidad, bioeconomía y procesamiento de imágenes satelitales (Copernicus/Landsat).
+
+📄 Licencia
+Propiedad de la Unión Temporal T&T 2026. Proyecto desarrollado en el marco del contrato interadministrativo No. 2164 con el Fondo Único de TIC y FINDETER.
