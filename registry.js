@@ -27,7 +27,7 @@ const DASHBOARD_DATA = {
             date: "2026-04-30",
             completion: 85, // Porcentaje real del Acta
             signature: [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // Cruce con las 15 actividades
-            details: "Arquitectura: Angular, MongoDB y Gemini API. Avatar: Ximiagua (inclusivo). Entrega funcional al 30-Abril para evento Colombia 5.0 y presentación crítica ante el Viceministerio TIC (08-Mayo).",
+            details: "Arquitectura: Angular, MongoDB y Gemini API. Avatar: Chiminigagua (inclusivo). Entrega funcional al 30-Abril para evento Colombia 5.0 y presentación crítica ante el Viceministerio TIC (08-Mayo).",
             responsable: "TSG - Camilo Arias"
         },
         {
@@ -55,7 +55,7 @@ const DASHBOARD_DATA = {
             completion: 100,
             signature: [0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             details: "Cambio Estratégico: Mesas semanales para agilizar decisiones. Ajuste: 153 actividades reestructuradas para asegurar 'victorias tempranas' antes del cambio de gobierno.",
-            responsable: "Holman Bolívar"
+            responsable: "TSG - Holman Bolívar"
         },
         {
             id: "H04",
@@ -64,7 +64,7 @@ const DASHBOARD_DATA = {
             completion: 0,
             signature: [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
             details: "Estrategia: Espacio físico acondicionado con infraestructura tecnológica instalada, integrada y en funcionamiento",
-            responsable: "Talentum"
+            responsable: "Talentum - Solangie Garavito"
         },
         {
             id: "H05",
@@ -73,7 +73,7 @@ const DASHBOARD_DATA = {
             completion: 50,
             signature: [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             details: "Estrategia: Activación de 'Plan B' urgente (academia, PENDATA) ante riesgo de silos. Arquitectura: Definición de modelo Medallón sobre modelos Open Source.",
-            responsable: "Johnny Sierra"
+            responsable: "TSG - Johnny Sierra, Andres Posada"
         },
         {
             id: "H06",
