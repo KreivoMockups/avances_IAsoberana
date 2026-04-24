@@ -1,7 +1,6 @@
 /* Archivo auto-generado por Python */
 const DASHBOARD_DATA = {
     "expectedItems": [
-        "0.1 Plan de Trabajo",
         "1 SHOWROOM Y APROPIACIÓN CIUDADANA",
         "1.1 Desarrollar showroom virtual",
         "1.1.1 Definir requerimientos funcionales y contenidos del showroom",
