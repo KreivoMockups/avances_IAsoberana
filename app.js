@@ -1,42 +1,50 @@
-/* app.js */
+/* app.js corregido */
+
+function getInfo(text) {
+    const match = text.match(/^(\d+(\.\d+)*)/);
+    const id = match ? match[1] : "";
+    const level = id ? id.split('.').length : 1;
+    return { id, level };
+}
+
 function renderDashboard() {
     const expectedLabels = document.getElementById('expected-labels');
     const barsContainer = document.getElementById('bars-container');
     const matrixContainer = document.getElementById('matrix-container');
 
-    // 1. Renderizar Eje Vertical (15 Actividades)
-    DASHBOARD_DATA.expectedItems.forEach(item => {
+    DASHBOARD_DATA.expectedItems.forEach((item, index) => {
+        const { id, level } = getInfo(item);
         const div = document.createElement('div');
-        div.className = "grid-row-label text-xs font-medium text-slate-400 hover:text-slate-200 transition-colors";
-        div.innerText = item;
+        div.className = `grid-row-label text-xs font-medium transition-all cursor-pointer row-idx-${index} level-${level}`;
+        div.style.paddingRight = `${(level - 1) * 20}px`;
+        div.style.height = "40px";
+        
+        const icon = level < 3 ? `<span class="ml-2 opacity-40 text-[9px] font-bold">${level === 1 ? '⊕' : '○'}</span>` : '';
+        div.innerHTML = `<span class="${level === 1 ? 'text-amber-500 font-bold' : 'text-slate-400'}">${item}</span> ${icon}`;
+        
+        div.onclick = () => toggleLevel(id, level);
+        div.setAttribute('data-id', id);
+        if (level > 1) div.style.display = "none";
         expectedLabels.appendChild(div);
     });
 
-    // 2. Renderizar Columnas (Hitos)
     DASHBOARD_DATA.milestones.forEach((milestone, mIdx) => {
-        
-        // --- A. BARRAS SUPERIORES DE PORCENTAJE ---
         const barContainerWrap = document.createElement('div');
         barContainerWrap.className = "flex flex-col items-center justify-end h-full w-[40px] shrink-0";
-        
         const bar = document.createElement('div');
-        bar.className = "bar w-full h-[80px]";
+        bar.className = "bar w-full h-[60px]";
         bar.id = `bar-${mIdx}`;
         bar.onclick = () => selectMilestone(mIdx);
-        
         const fill = document.createElement('div');
         fill.className = "bar-fill";
-        // Animación suave de llenado
         setTimeout(() => { fill.style.height = `${milestone.completion}%`; }, 100);
-        
         bar.appendChild(fill);
         
         const label = document.createElement('span');
-        label.className = "text-[10px] text-slate-400 mt-2 font-mono font-bold tracking-widest text-center h-4 block truncate w-full";
+        label.className = "milestone-id-label";
         label.innerText = milestone.id;
-        
         const percent = document.createElement('span');
-        percent.className = "text-sm text-white font-bold mb-1 drop-shadow-md";
+        percent.className = "text-[11px] text-white font-bold mb-1";
         percent.innerText = `${milestone.completion}%`;
 
         barContainerWrap.appendChild(percent);
@@ -44,61 +52,72 @@ function renderDashboard() {
         barContainerWrap.appendChild(label);
         barsContainer.appendChild(barContainerWrap);
 
-        // --- B. MATRIZ DE INTERSECCIÓN (PUNTOS Y LÍNEAS) ---
         const col = document.createElement('div');
         col.className = "flex flex-col relative w-[40px] shrink-0";
-        col.id = `col-${mIdx}`;
-        
-        // Dibujar los 15 puntos
-        milestone.signature.forEach((active) => {
+        milestone.signature.forEach((active, sIdx) => {
             const rowWrap = document.createElement('div');
-            rowWrap.className = "grid-row-dot";
+            rowWrap.className = `grid-row-dot dot-row-idx-${sIdx}`;
+            rowWrap.style.height = "40px";
+            const { level } = getInfo(DASHBOARD_DATA.expectedItems[sIdx]);
+            if (level > 1) rowWrap.style.display = "none";
             const circle = document.createElement('div');
             circle.className = `upset-matrix-circle ${active ? 'active' : ''}`;
             rowWrap.appendChild(circle);
             col.appendChild(rowWrap);
         });
-
-        // Dibujar línea conectora si hay más de 1 punto activo
-        const activeIndices = milestone.signature.map((val, i) => val === 1 ? i : -1).filter(i => i !== -1);
-        if (activeIndices.length > 1) {
-            const line = document.createElement('div');
-            line.className = "upset-line";
-            
-            // Calculamos la altura exacta de la línea basados en la clase grid-row-dot (28px de alto)
-            const topPosition = (activeIndices[0] * 28) + 14; 
-            const bottomPosition = (activeIndices[activeIndices.length - 1] * 28) + 14;
-            
-            line.style.top = `${topPosition}px`;
-            line.style.height = `${bottomPosition - topPosition}px`;
-            col.appendChild(line);
-        }
-
         matrixContainer.appendChild(col);
+    });
+}
+
+function toggleLevel(parentId, parentLevel) {
+    const labels = [...document.querySelectorAll('.grid-row-label')];
+    // Buscamos si el nivel inmediatamente inferior está visible para determinar si colapsamos o expandimos
+    const firstChild = labels.find(l => {
+        const cid = l.getAttribute('data-id');
+        return cid.startsWith(parentId + ".") && getInfo(cid).level === parentLevel + 1;
+    });
+
+    const isExpanding = firstChild && firstChild.style.display === "none";
+
+    labels.forEach((label, idx) => {
+        const currentId = label.getAttribute('data-id');
+        // Caso 1: Expandir solo el nivel siguiente
+        if (isExpanding) {
+            if (currentId.startsWith(parentId + ".") && getInfo(currentId).level === parentLevel + 1) {
+                label.style.display = "flex";
+                document.querySelectorAll(`.dot-row-idx-${idx}`).forEach(d => d.style.display = "flex");
+            }
+        } 
+        // Caso 2: Colapsar TODOS los descendientes recursivamente
+        else {
+            if (currentId.startsWith(parentId + ".")) {
+                label.style.display = "none";
+                document.querySelectorAll(`.dot-row-idx-${idx}`).forEach(d => d.style.display = "none");
+            }
+        }
     });
 }
 
 function selectMilestone(idx) {
     const milestone = DASHBOARD_DATA.milestones[idx];
-    
-    // UI Highlights
-    document.querySelectorAll('.bar').forEach(b => b.classList.remove('active', 'border-2', 'border-white'));
-    document.getElementById(`bar-${idx}`).classList.add('active', 'border-2', 'border-white');
+    const header = document.getElementById('hitos-header');
+    header.innerHTML = `<span class="text-slate-500 font-normal">Hito Seleccionado:</span> ${milestone.name}`;
+    header.classList.add('text-white');
+
+    document.querySelectorAll('.bar').forEach(b => b.classList.remove('active', 'ring-2', 'ring-amber-400'));
+    document.getElementById(`bar-${idx}`).classList.add('active', 'ring-2', 'ring-amber-400');
     
     const ficha = document.getElementById('ficha-tecnica');
     ficha.classList.remove('opacity-40');
-    ficha.classList.add('opacity-100', 'border-amber-500/50', 'shadow-[0_0_30px_rgba(46,204,113,0.1)]');
     
-    // Inyectar Datos Reales
     document.getElementById('ficha-id').innerText = milestone.id;
     document.getElementById('ficha-title').innerText = milestone.name;
     document.getElementById('ficha-date').innerText = `Corte: ${milestone.date}`;
     document.getElementById('ficha-resp').innerText = `Responsable: ${milestone.responsable}`;
     
-    // Formatear texto para resaltar etiquetas clave (ej. Arquitectura:, Riesgo:)
-    const formattedDetails = milestone.details.replace(/(Arquitectura:|Riesgo:|Estrategia:|MVP:|Macro:|Cambio Estratégico:|Avatar:)/g, '<strong class="text-amber-400">$1</strong>');
+    // CORRECCIÓN: Usamos text-amber-400 para el Oro
+    const formattedDetails = milestone.details.replace(/(Arquitectura:|Riesgo:|Estrategia:|MVP:|Macro:|Cambio Estratégico:|Avatar:|Plan B:)/g, '<strong class="text-amber-400">$1</strong>');
     document.getElementById('ficha-details').innerHTML = formattedDetails;
 }
 
-// Iniciar
 renderDashboard();
