@@ -761,7 +761,7 @@ const DASHBOARD_DATA = {
             "id": "H02",
             "name": "SOCIALIZACION",
             "date": "2026-05-22",
-            "completion": 23,
+            "completion": 38,
             "signature": [
                 0,
                 0,
@@ -1136,7 +1136,7 @@ const DASHBOARD_DATA = {
                 0,
                 0
             ],
-            "details": "Contactos Mesas de Gobernanza",
+            "details": "Contactos Mesas de Gobernanza, 22/5/26 se realiza el lanzamiento con participación presencial y virtual invitando a la ciudadanía a participar en las mesas de gobernanza.",
             "responsable": "Responsable: UT T&T 2026"
         },
         {
@@ -1525,7 +1525,7 @@ const DASHBOARD_DATA = {
             "id": "H04",
             "name": "SHOWROOM FISICO",
             "date": "2026-07-31",
-            "completion": 0,
+            "completion": 5,
             "signature": [
                 1,
                 0,
@@ -1900,14 +1900,14 @@ const DASHBOARD_DATA = {
                 0,
                 0
             ],
-            "details": "Espacio físico acondicionado con infraestructura tecnológica instalada, integrada y en funcionamiento",
+            "details": "Espacio físico acondicionado con infraestructura tecnológica instalada, integrada y en funcionamiento. Propuesta de showroom 3D ",
             "responsable": "Talentum - Solangie Garavito"
         },
         {
             "id": "H05",
             "name": "PLAN MAESTRO DE DATOS",
             "date": "2026-04-09",
-            "completion": 56,
+            "completion": 63,
             "signature": [
                 0,
                 0,
@@ -2282,14 +2282,14 @@ const DASHBOARD_DATA = {
                 0,
                 0
             ],
-            "details": "Estrategia: Activación de 'Plan B' urgente (academia, PENDATA, compra) ante riesgo de silos. Arquitectura: Definición de modelo Medallón (Bronce, Plata, Oro) sobre modelos Open Source.\nRevisión de datos en fuentes abiertas para comenzar con entrenamientos relacionados a posibles casos de uso propuestos",
-            "responsable": "Johnny Sierra / Andrés Posada"
+            "details": "Estrategia: Activación de 'Plan B' urgente (academia, PENDATA, compra) ante riesgo de silos. Arquitectura: Definición de modelo Medallón (Bronce, Plata, Oro) sobre modelos Open Source.\nRevisión de datos en fuentes abiertas para comenzar con entrenamientos relacionados a posibles casos de uso propuestos.\nListado datos abiertos Colombia en Salud y Medio Ambiente\nConsecución de primeros datos IPS (historias clínicas anonimizadas)",
+            "responsable": "Carlos Franco / Andrés Posada"
         },
         {
             "id": "H06",
             "name": "MODEL CARD DE MODELO FUNDACIONAL DE SALUD",
             "date": "2026-07-24",
-            "completion": 8,
+            "completion": 12,
             "signature": [
                 0,
                 0,
@@ -2671,7 +2671,7 @@ const DASHBOARD_DATA = {
             "id": "H07",
             "name": "MODEL CARD DE MODELO FUNDACIONAL DE MEDIO AMBIENTE",
             "date": "2026-09-25",
-            "completion": 7,
+            "completion": 9,
             "signature": [
                 0,
                 0,
@@ -3053,7 +3053,7 @@ const DASHBOARD_DATA = {
             "id": "H08",
             "name": "PROTOTIPO FUNCIONAL PRIMER CASO DE USO SALUD",
             "date": "2026-10-23",
-            "completion": 0,
+            "completion": 5,
             "signature": [
                 0,
                 0,
@@ -3428,7 +3428,7 @@ const DASHBOARD_DATA = {
                 0,
                 0
             ],
-            "details": "Caso de estudio validado (epidemiología)",
+            "details": "Caso de estudio validado (epidemiología): Primeros datos en historias clínicas IPS",
             "responsable": "TSG"
         },
         {
@@ -3817,7 +3817,7 @@ const DASHBOARD_DATA = {
             "id": "H10",
             "name": "PROTOTIPO FUNCIONAL PRIMER CASO DE USO MEDIOAMBIENTE",
             "date": "2026-12-18",
-            "completion": 0,
+            "completion": 5,
             "signature": [
                 0,
                 0,
@@ -4192,7 +4192,7 @@ const DASHBOARD_DATA = {
                 0,
                 0
             ],
-            "details": "Caso de estudio validado (bioeconomía)",
+            "details": "Caso de estudio validado (bioeconomía): Primeros datos IDEAM",
             "responsable": "TSG"
         },
         {
