@@ -1907,7 +1907,7 @@ const DASHBOARD_DATA = {
             "id": "H05",
             "name": "PLAN MAESTRO DE DATOS",
             "date": "2026-07-09",
-            "completion": 63,
+            "completion": 60,
             "signature": [
                 0,
                 0,
@@ -2289,7 +2289,7 @@ const DASHBOARD_DATA = {
             "id": "H06",
             "name": "MODEL CARD DE MODELO FUNDACIONAL DE SALUD",
             "date": "2026-07-24",
-            "completion": 33,
+            "completion": 5,
             "signature": [
                 0,
                 0,
@@ -2671,7 +2671,7 @@ const DASHBOARD_DATA = {
             "id": "H07",
             "name": "MODEL CARD DE MODELO FUNDACIONAL DE MEDIO AMBIENTE",
             "date": "2026-09-25",
-            "completion": 25,
+            "completion": 0,
             "signature": [
                 0,
                 0,
@@ -3053,7 +3053,7 @@ const DASHBOARD_DATA = {
             "id": "H08",
             "name": "PROTOTIPO FUNCIONAL PRIMER CASO DE USO SALUD",
             "date": "2026-10-23",
-            "completion": 15,
+            "completion": 0,
             "signature": [
                 0,
                 0,
@@ -3817,7 +3817,7 @@ const DASHBOARD_DATA = {
             "id": "H10",
             "name": "PROTOTIPO FUNCIONAL PRIMER CASO DE USO MEDIOAMBIENTE",
             "date": "2026-12-18",
-            "completion": 5,
+            "completion": 0,
             "signature": [
                 0,
                 0,
