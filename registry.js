@@ -1143,7 +1143,7 @@ const DASHBOARD_DATA = {
             "id": "H03",
             "name": "GOBERNANZA Y CRONOGRAMA",
             "date": "2026-04-14",
-            "completion": 19,
+            "completion": 40,
             "signature": [
                 0,
                 0,
